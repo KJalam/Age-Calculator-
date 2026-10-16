@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Age Calculator</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f0f4f8;
+  text-align: center;
+  padding: 25px 12px;
+}
+.container {
+  background: white;
+  max-width: 400px;
+  margin: 30px auto;
+  padding: 25px 18px;
+  border-radius: 18px;
+}
+h1 { color: #174ea6; }
+input {
+  padding: 12px;
+  font-size: 16px;
+  max-width: 90%;
+}
+button {
+  padding: 13px;
+  margin: 10px 4px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
+.calculate { background: #174ea6; color: white; }
+.reset { background: #e5e7eb; }
+#result {
+  background: #eef5ff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🎂 Age Calculator</h1>
+<p>Discover your exact age!</p>
+<label for="dob">Select your date of birth</label>
+<br><br>
+<input type="date" id="dob">
+<br><br>
+<button class="calculate" onclick="calculateAge()">Calculate Age</button>
+<button class="reset" onclick="resetCalculator()">Reset</button>
+<div id="result">Your age will appear here.</div>
+</div>
+</div>
+  
+<script>
+function calculateAge() {
+  const value = document.getElementById("dob").value;
+  const result = document.getElementById("result");
+
+  if (!value) {
+    result.textContent = "Please select your birth date.";
+    return;
+  }
+
+  const parts = value.split("-").map(Number);
+  const birth = new Date(parts[0], parts[1] - 1, parts[2]);
+  const today = new Date();
+  const now = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate()
+  );
+
+  if (birth > now) {
+    result.textContent = "Please choose a past date.";
+    return;
+  }
+
+  let years = now.getFullYear() - parts[0];
+  let months = now.getMonth() - (parts[1] - 1);
+  let days = now.getDate() - parts[2];
+
+  if (days < 0) {
+    months--;
+    days += new Date(
+      now.getFullYear(), now.getMonth(), 0
+    ).getDate();
+  }
+
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+
+  result.textContent =
+    "Your age: " + years + " years, " +
+    months + " months, " + days + " days.";
+}
+
+function resetCalculator() {
+  document.getElementById("dob").value = "";
+  document.getElementById("result").textContent =
+    "Your age will appear here.";
+}
+</script>
+</div>
+  
+<script>
+function calculateAge() {
+  const value = document.getElementById("dob").value;
+  const result = document.getElementById("result");
+
+  if (!value) {
+    result.textContent = "Please select your birth date.";
+    return;
+  }
+
+  const parts = value.split("-").map(Number);
+  const birth = new Date(parts[0], parts[1] - 1, parts[2]);
+  const today = new Date();
+  const now = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate()
+  );
+
+  if (birth > now) {
+    result.textContent = "Please choose a past date.";
+    return;
+  }
+
+  let years = now.getFullYear() - parts[0];
+  let months = now.getMonth() - (parts[1] - 1);
+  let days = now.getDate() - parts[2];
+
+  if (days < 0) {
+    months--;
+    days += new Date(
+      now.getFullYear(), now.getMonth(), 0
+    ).getDate();
+  }
+
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+
+  result.textContent =
+    "Your age: " + years + " years, " +
+    months + " months, " + days + " days.";
+}
+
+function resetCalculator() {
+  document.getElementById("dob").value = "";
+  document.getElementById("result").textContent =
+    "Your age will appear here.";
+}
+</script>
+
+</body>
+</html>
