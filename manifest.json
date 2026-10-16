@@ -1,0 +1,10 @@
+
+{
+  "name": "Age Calculator",
+  "short_name": "Age Calc",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f0f4f8",
+  "theme_color": "#174ea6"
+}
